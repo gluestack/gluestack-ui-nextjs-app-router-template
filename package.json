@@ -1,7 +1,11 @@
 {
-  "name": "test-template",
+  "name": "nextjs-app-router",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gluestack/nextjs-app-router.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
