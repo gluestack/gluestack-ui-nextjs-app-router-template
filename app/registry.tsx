@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useServerInsertedHTML } from "next/navigation";
 import { StyleRegistry, createStyleRegistry } from "styled-jsx";
+import { Html, Head, Main, NextScript } from "next/document";
+// @ts-ignore
+import { AppRegistry } from "react-native-web";
 import { flush } from "@gluestack-style/react";
 
 export default function StyledJsxRegistry({
@@ -15,7 +18,9 @@ export default function StyledJsxRegistry({
   const [jsxStyleRegistry] = useState(() => createStyleRegistry());
 
   useServerInsertedHTML(() => {
-    const styles = [jsxStyleRegistry.styles(), ...flush()];
+    AppRegistry.registerComponent("Main", () => Main);
+    const { getStyleElement } = AppRegistry.getApplication("Main");
+    const styles = [getStyleElement(), jsxStyleRegistry.styles(), ...flush()];
     jsxStyleRegistry.flush();
     return <>{styles}</>;
   });

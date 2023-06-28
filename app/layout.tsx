@@ -16,12 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="gs gs-light">
       <body className={inter.className}>
         <Providers>
-          {/* <StyledJsxRegistry> */}
-          {children}
-          {/* </StyledJsxRegistry> */}
+          <StyledJsxRegistry>{children}</StyledJsxRegistry>
         </Providers>
       </body>
     </html>
